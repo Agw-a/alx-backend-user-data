@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''Defines BaseAuth class
 '''
 from api.v1.auth.auth import Auth
