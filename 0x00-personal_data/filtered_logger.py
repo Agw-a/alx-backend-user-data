@@ -79,3 +79,31 @@ def get_db() -> MySQLConnection:
         user=os.getenv("PERSONAL_DATA_DB_USERNAME")
         password=os.getenv("PERSONAL_DATA_DB_PASSWORD"))
     return connection
+
+
+def main() -> None:
+    '''
+    The function will obtain a database connection using get_db
+    and retrieve all rows in the users table
+    and display each row under a filtered format like this
+    '''
+    database = get_db()
+    cursor = database.cursor()
+    query = '''SELECT name, email, phone, ssn, password,
+              ip, last_login, user_agent FROM users'''
+    cursor.execute(query)
+    response = cursor.fetchall()
+    col = ('name', 'email', 'phone', 'ssn', 'password',
+            'ip', 'last_login', 'user_agent')
+    logger = get_logger()
+    for ro in response:
+        msg = ['{}={};'.format(col[i], ro[i]) for i in range(len(ro))]
+        msg = ''.join(msg)
+        lg = logging.LogRecord("user_data", logging.INFO, None,
+                               None, msg, None, None)
+        logger.handle(lg)
+    database.close()
+
+
+if __name__ == '__main__':
+    main()
