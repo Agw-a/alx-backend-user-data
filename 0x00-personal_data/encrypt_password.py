@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''basic password encryption module
+'''password encryption/validation module
 '''
 import bcrypt
 
