@@ -11,7 +11,7 @@ class User(Base):
     '''sqlalchemy model for a users table
     '''
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
     session_id = Column(String, nullable=True)
