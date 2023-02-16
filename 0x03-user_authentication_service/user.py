@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 '''Delare a User model
 '''
 from sqlalchemy.ext.declarative import declarative_base
