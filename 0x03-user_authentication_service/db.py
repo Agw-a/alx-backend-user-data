@@ -22,7 +22,7 @@ class DB():
         '''initialize a new DB engine
         '''
         # self._engine = create_engine(connection_string, echo=False)
-        self._engine = create_engine("sqlite://a.db", echo=True)
+        self._engine = create_engine("sqlite:///a.db", echo=True)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
         self.__session = None
@@ -77,7 +77,7 @@ class DB():
                 updated[getattr(User, key)] = val
             else:
                 raise ValueError()
-        self._sesion.query(User).filter(User.id == user_id).update(
+        self._session.query(User).filter(User.id == user_id).update(
             updated,
             synchronize_session=False
         )
