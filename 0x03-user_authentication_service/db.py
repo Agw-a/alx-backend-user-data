@@ -66,7 +66,7 @@ class DB():
         return res
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        '''locate a user based on id and update and commit to DB
+        '''Find user onn ID and commit changes
         '''
         user = self.find_user_by(id=user_id)
         if user is None:
