@@ -3,7 +3,7 @@
 '''
 
 from sqlalchemy import create_engine, tuple_
-# from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.session import Session
@@ -41,7 +41,7 @@ class DB():
         '''
         try:
             newUser = User(email=email, hashed_password=hashed_password)
-            self.__session.add(newUser)
+            self._session.add(newUser)
             self._sesion.commit(newUser)
         except Exception:
             self._sesion.rollback()
@@ -58,7 +58,7 @@ class DB():
                 values.append(val)
             else:
                 raise InvalidRequestError()
-        res = self.__session.query(User).filter(
+        res = self._session.query(User).filter(
             tuple_(*fields).in_([tuple(values)])
         ).first()
         if res is None:
@@ -81,4 +81,4 @@ class DB():
             updated,
             synchronize_session=False
         )
-        self.__session.commit()
+        self._session.commit()
