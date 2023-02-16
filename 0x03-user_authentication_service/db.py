@@ -42,7 +42,7 @@ class DB():
         try:
             newUser = User(email=email, hashed_password=hashed_password)
             self._session.add(newUser)
-            self._sesion.commit(newUser)
+            self._sesion.commit()
         except Exception:
             self._sesion.rollback()
             newUser = None
