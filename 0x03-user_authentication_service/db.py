@@ -28,7 +28,7 @@ class DB():
         self.__session = None
 
     @property
-    def _sesion(self) -> Session:
+    def _session(self) -> Session:
         '''Memoized session object
         '''
         if self.__session is None:
@@ -42,9 +42,9 @@ class DB():
         try:
             newUser = User(email=email, hashed_password=hashed_password)
             self._session.add(newUser)
-            self._sesion.commit()
+            self._session.commit()
         except Exception:
-            self._sesion.rollback()
+            self._session.rollback()
             newUser = None
         return newUser
 
