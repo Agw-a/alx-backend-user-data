@@ -46,6 +46,8 @@ class RedactingFormatter(logging.Formatter):
     SEPARATOR = ";"
 
     def __init__(self, fields: List[str]):
+        '''initialize variables
+        '''
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = list(fields)
 
@@ -77,7 +79,9 @@ def get_db() -> MySQLConnection:
         host=os.getenv("PERSONAL_DATA_DB_HOST")
         database=os.getenv("PERSONAL_DATA_DB_NAME")
         user=os.getenv("PERSONAL_DATA_DB_USERNAME")
-        password=os.getenv("PERSONAL_DATA_DB_PASSWORD"))
+        password=os.getenv("PERSONAL_DATA_DB_PASSWORD")
+    )
+
     return connection
 
 
