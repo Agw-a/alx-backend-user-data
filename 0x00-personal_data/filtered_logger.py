@@ -76,9 +76,9 @@ def get_db() -> MySQLConnection:
     ''' Returns a secure DB connection
     '''
     connection = MySQLConnection(
-        host=os.getenv("PERSONAL_DATA_DB_HOST")
-        database=os.getenv("PERSONAL_DATA_DB_NAME")
-        user=os.getenv("PERSONAL_DATA_DB_USERNAME")
+        host=os.getenv("PERSONAL_DATA_DB_HOST"),
+        database=os.getenv("PERSONAL_DATA_DB_NAME"),
+        user=os.getenv("PERSONAL_DATA_DB_USERNAME"),
         password=os.getenv("PERSONAL_DATA_DB_PASSWORD")
     )
 
